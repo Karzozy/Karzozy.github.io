@@ -10,14 +10,13 @@ document.querySelectorAll('.nav-links a').forEach(link => {
 
 // === Modo oscuro ===
 const themeToggle = document.getElementById('theme-toggle');
-const savedTheme = localStorage.getItem('theme');
-const initialTheme = savedTheme || 'dark';
+const preferredTheme = 'dark';
 
-document.documentElement.setAttribute('data-theme', initialTheme);
-if (!savedTheme) localStorage.setItem('theme', 'dark');
+document.documentElement.setAttribute('data-theme', preferredTheme);
+localStorage.setItem('theme', preferredTheme);
 
 if (themeToggle) {
-  themeToggle.textContent = initialTheme === 'dark' ? '☀️' : '🌙';
+  themeToggle.textContent = '☀️';
   themeToggle.addEventListener('click', () => {
     const current = document.documentElement.getAttribute('data-theme');
     const newTheme = current === 'dark' ? 'light' : 'dark';
