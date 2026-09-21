@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portafolio de David - Futuro Desarrollador" />
+  <title>David Santiago Arias Narvaez | Portafolio</title>
+  <link rel="stylesheet" href="styles/style.css" />
+  <link rel="icon" href="assets/icons/favicon.ico" />
+</head>
+<body>
+  <!-- Navbar -->
+  <header class="navbar">
+    <a href="#inicio" class="logo"><span class="logo-name">Krzo</span> <span class="logo-role">developer</span></a>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#sobre-mi">Sobre mí</a></li>
+        <li><a href="#hobbies">Hobbies</a></li>
+      </ul>
+      <button id="theme-toggle" aria-label="Cambiar tema">🌙</button>
+      <button class="menu-toggle" aria-label="Abrir menu">☰</button>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section id="inicio" class="hero">
+    <img src="assets/img/GLaptop.png" alt="Decorativo" class="hero-decorative" />
+    <div class="hero-content">
+      <img src="assets/img/descargar.jpg" alt="Presentación" class="hero-presentation" />
+      <p class="subtitle">Hola, soy</p>
+      <h1 class="hero-title">David Arias</h1>
+      <h2 class="hero-role">Estudiante - Ingenieria de <span class="typed" id="typed"></span></h2>
+      <p class="hero-desc">Aprendiendo a crear experiencias web modernas.</p>
+      <div class="hero-buttons">
+        <a href="#hobbies" class="btn btn-primary">Ver hobbies</a>
+        <a href="assets/docs/cv.pdf" class="btn btn-outline btn-download" download="cv.pdf">
+          <span class="download-icon" aria-hidden="true">↓</span>
+          <span>Mi CV</span>
+        </a>
+        <a href="https://github.com/Karzozy" class="btn btn-outline btn-github" target="_blank" rel="noreferrer">
+          <svg class="github-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.38 7.86 10.9.58.11.79-.25.79-.56v-2.18c-3.2.7-3.87-1.54-3.87-1.54-.52-1.33-1.27-1.68-1.27-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.74 2.68 1.24 3.34.95.1-.74.4-1.24.72-1.53-2.55-.29-5.23-1.28-5.23-5.7 0-1.26.45-2.29 1.18-3.09-.12-.29-.51-1.47.11-3.06 0 0 .97-.31 3.17 1.18A11.02 11.02 0 0 1 12 6.8c.98 0 1.97.13 2.89.38 2.2-1.49 3.17-1.18 3.17-1.18.62 1.59.23 2.77.11 3.06.73.8 1.18 1.83 1.18 3.09 0 4.43-2.69 5.4-5.25 5.69.41.36.78 1.08.78 2.18v3.23c0 .31.21.68.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z" fill="currentColor"/>
+          </svg>
+          <span>GitHub</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sobre mi -->
+  <section id="sobre-mi" class="section about-section">
+    <img src="assets/img/GLaptop2.png" alt="Decoración sobre mí" class="about-decorative" />
+    <img src="assets/img/Cat1.png" alt="Decoración Sobre mí" class="section-decoration" />
+    <h2 class="section-title">Sobre mí</h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>Soy un desarrollador de 20 años aficionado por la programación, el internet y la música. Disfruto aprendiendo nuevas tecnologías y enfrentando desafíos. Ambas pasiones las veo relacionadas, ya que en ambos mundos esta completamente presente la algoritmia.</p>
+        <p>En la seccion de inicio puedes encontrar mi curriculum vitae y mi GitHub :). </p>
+      </div>
+      <div class="skills">
+        <h3>Habilidades aprendidas</h3>
+        <div class="skill-tags">
+          <span class="skill-item">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python logo" />
+            <span>Python</span>
+          </span>
+          <span class="skill-item">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java logo" />
+            <span>Java</span>
+          </span>
+          <span class="skill-item">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="C++ logo" />
+            <span>C++</span>
+          </span>
+          <span class="skill-item">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" alt="C logo" />
+            <span>C</span>
+          </span>
+          <span class="skill-item">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git logo" />
+            <span>Git</span>
+          </span>
+          <span class="skill-item">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" alt="C# logo" />
+            <span>C#</span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hobbies y mini pry -->
+  <section id="hobbies" class="section hobbies-section">
+    <img src="assets/img/GLaptop3.png" alt="Decoración hobbies" class="hobbies-decorative" />
+    <h2 class="section-title">Hobbies y Mini Proyecto</h2>
+    <div class="filter-buttons" style="display: none;">
+      <button class="filter-btn active" data-filter="all">Todos</button>
+      <button class="filter-btn" data-filter="hobby">Hobbies</button>
+      <button class="filter-btn" data-filter="mini">Mini proyecto</button>
+    </div>
+    <div class="projects-grid">
+      <article class="project-card" data-category="hobby">
+        <img src="assets/img/imgFl1.png" alt="Hobby" />
+        <h3>Produccion musical</h3>
+        <p class="hobby-description">En mis tiempos libres me gusta producir música, explorar distintos géneros y aprender a usar herramientas de edición para dar forma a ideas y sonidos propios.</p>
+        <p class="hobby-description">Uno de los DAW´s mas usados y que claramente es mi favorito es el FL Studio el cual toma su tiempo pero se vuelve sencillo de entender.</p>
+        <div class="youtube-video">
+          <iframe
+            src="https://www.youtube.com/embed/vORMQYdQjQc?si=EpiRNLgRXVxECTF-"
+            title="Tutorial de FL Studio"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <footer>
+    <img src="assets/img/Cat2.png" alt="Decoración final" class="footer-decoration" />
+    <p>© 2026 David Arias. Hecho con HTML, CSS y JavaScript </p>
+  </footer>
+
+  <script src="scripts/main.js"></script>
+</body>
+</html>
