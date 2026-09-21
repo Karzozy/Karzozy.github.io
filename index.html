@@ -99,15 +99,6 @@
       <button class="filter-btn" data-filter="hobby">Hobbies</button>
       <button class="filter-btn" data-filter="mini">Mini proyecto</button>
     </div>
-    <div class="mini-project-wrapper">
-      <iframe
-        class="mini-project-frame"
-        src="mini-project/index.html"
-        title="Mini proyecto de tienda"
-        loading="lazy"
-        referrerpolicy="strict-origin-when-cross-origin">
-      </iframe>
-    </div>
     <div class="projects-grid">
       <article class="project-card" data-category="hobby">
         <img src="assets/img/imgFl1.png" alt="Hobby" />
@@ -127,10 +118,18 @@
       <article class="project-card" data-category="mini">
         <img src="assets/img/proyecto2.jpg" alt="Mini proyecto" />
         <h3>Tienda de productos</h3>
-        <p>-------------------------------------------------------------------------------------------------------</p>
+        <p>Pequeña tienda con catálogo, filtros, carrito y cupones para practicar lógica con JavaScript.</p>
         <div class="project-links">
-          <a href="#" target="_blank">Demo</a>
-          <a href="#" target="_blank">Código</a>
+          <a href="mini-project/index.html" target="_blank" rel="noreferrer">Demo</a>
+          <button class="project-code-toggle" type="button">Código</button>
+        </div>
+        <div class="project-code-panel" hidden>
+          <ul>
+            <li>mini-project/index.html</li>
+            <li>mini-project/style.css</li>
+            <li>mini-project/script.js</li>
+            <li>mini-project/images/</li>
+          </ul>
         </div>
       </article>
     </div>

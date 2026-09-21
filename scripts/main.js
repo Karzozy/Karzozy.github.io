@@ -71,6 +71,22 @@ filterBtns.forEach(btn => {
   });
 });
 
+const codeButtons = document.querySelectorAll('.project-code-toggle');
+codeButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    const panel = button.closest('.project-card').querySelector('.project-code-panel');
+    const isHidden = panel.hasAttribute('hidden');
+
+    if (isHidden) {
+      panel.removeAttribute('hidden');
+      button.textContent = 'Ocultar';
+    } else {
+      panel.setAttribute('hidden', 'hidden');
+      button.textContent = 'Código';
+    }
+  });
+});
+
 // === Animación al hacer scroll ===
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
