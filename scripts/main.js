@@ -53,27 +53,65 @@ typeEffect();
 const filterBtns = document.querySelectorAll('.filter-btn');
 const projects = document.querySelectorAll('.project-card');
 
-function updateHobbyMode(filter) {
+function updateProjectMode(filter) {
   projects.forEach(p => {
-    p.classList.toggle('is-hobby-mode', filter === 'hobby' && p.dataset.category === 'hobby');
+    p.classList.remove('is-hobby-mode', 'is-mini-mode');
+
+    if (filter === 'hobby' && p.dataset.category === 'hobby') {
+      p.classList.add('is-hobby-mode');
+    }
+
+    if (filter === 'mini' && p.dataset.category === 'mini') {
+      p.classList.add('is-mini-mode');
+    }
   });
+}
+
+function applyProjectFilter(filter) {
+  filterBtns.forEach(b => b.classList.remove('active'));
+  const activeBtn = document.querySelector(`.filter-btn[data-filter="${filter}"]`);
+  if (activeBtn) activeBtn.classList.add('active');
+
+  projects.forEach(p => {
+    const shouldShow = filter === 'all' || p.dataset.category === filter;
+    p.style.display = shouldShow ? '' : 'none';
+  });
+
+  updateProjectMode(filter);
 }
 
 filterBtns.forEach(btn => {
   btn.addEventListener('click', () => {
-    filterBtns.forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    const filter = btn.dataset.filter;
-    projects.forEach(p => {
-      p.style.display = (filter === 'all' || p.dataset.category === filter) ? '' : 'none';
-    });
-    updateHobbyMode(filter);
+    applyProjectFilter(btn.dataset.filter);
+  });
+});
+
+projects.forEach(card => {
+  card.addEventListener('click', (event) => {
+    const target = event.target;
+    if (target.closest('.project-code-toggle') || target.closest('a')) {
+      return;
+    }
+
+    const filter = card.dataset.category;
+    applyProjectFilter(filter);
+    card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
+
+  card.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      const filter = card.dataset.category;
+      applyProjectFilter(filter);
+      card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
   });
 });
 
 const codeButtons = document.querySelectorAll('.project-code-toggle');
 codeButtons.forEach(button => {
-  button.addEventListener('click', () => {
+  button.addEventListener('click', (event) => {
+    event.stopPropagation();
     const panel = button.closest('.project-card').querySelector('.project-code-panel');
     const isHidden = panel.hasAttribute('hidden');
 
@@ -86,6 +124,8 @@ codeButtons.forEach(button => {
     }
   });
 });
+
+applyProjectFilter('all');
 
 // === Animación al hacer scroll ===
 const observer = new IntersectionObserver((entries) => {
