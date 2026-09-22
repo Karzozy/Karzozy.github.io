@@ -209,6 +209,28 @@ p { margin: 0; }
 
 
 /* 3. CABECERA -------------------------------------------------------------- */
+.mini-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.25rem;
+    padding: 0.9rem 1.2rem;
+    background: rgba(22, 101, 52, 0.95);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    flex-wrap: wrap;
+}
+
+.mini-nav a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+    transition: opacity 0.2s ease;
+}
+
+.mini-nav a:hover {
+    opacity: 0.8;
+}
+
 .cabecera {
     background-color: var(--color-cabecera);
     color: #ffffff;
