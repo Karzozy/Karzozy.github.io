@@ -68,12 +68,14 @@ const lineaDescuento = document.getElementById("linea-descuento");
 const inputDescuento  = document.getElementById("input-descuento");
 const btnDescuento    = document.getElementById("btn-aplicar-descuento");
 const selectCategoria = document.getElementById("filtro-categoria");
+const inputBusqueda = document.getElementById("buscar-producto");
 const formCompra  = document.getElementById("form-compra");
 const inputNombre = document.getElementById("input-nombre");
 const inputCorreo = document.getElementById("input-correo");
 const panelBoleta    = document.getElementById("panel-boleta");
 const avisoConexion  = document.getElementById("aviso-conexion");
 const btnTema        = document.getElementById("btn-tema");
+let terminoBusqueda = "";
 
 
 
@@ -317,9 +319,17 @@ function renderizarProductos() {
         //contenedorProductos.removeChild(contenedorProductos.firstChild);
         contenedorProductos.firstChild.remove();
     }
+
+    const terminoNormalizado = terminoBusqueda.trim().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    let productosMostrados = 0;
+
     inventarioProductos.forEach((producto) => {
         const coincideFiltro = (categoriaActual === "todos" || producto.categoria === categoriaActual);
-        if (coincideFiltro) {
+        const nombreNormalizado = producto.nombre.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+        const coincideBusqueda = (terminoNormalizado === "" || nombreNormalizado.includes(terminoNormalizado));
+
+        if (coincideFiltro && coincideBusqueda) {
+            productosMostrados++;
             const tarjeta = document.createElement("article");
             tarjeta.classList.add("tarjeta");
 
@@ -373,6 +383,13 @@ function renderizarProductos() {
             contenedorProductos.appendChild(tarjeta);
         }
     });
+
+    if (productosMostrados === 0) {
+        const mensajeVacio = document.createElement("p");
+        mensajeVacio.classList.add("sin-resultados");
+        mensajeVacio.textContent = "No se encontraron productos con ese nombre.";
+        contenedorProductos.appendChild(mensajeVacio);
+    }
 }
 
 
@@ -661,6 +678,12 @@ function actualizarPantalla() {
     // Actualiza la variable global 'categoriaActual' y vuelve a dibujar el catálogo.
     selectCategoria.addEventListener("change", () => {
         categoriaActual = selectCategoria.value; // .value trae la opción elegida
+        renderizarProductos();
+    });
+
+    // 8.5.1. Búsqueda en tiempo real: a medida que el usuario escribe, se compara con los nombres de los productos.
+    inputBusqueda.addEventListener("input", (evento) => {
+        terminoBusqueda = evento.target.value;
         renderizarProductos();
     });
 
