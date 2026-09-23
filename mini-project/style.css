@@ -398,6 +398,13 @@ p { margin: 0; }
     margin-top: 10px;
 }
 
+.boton-vaciar {
+    width: 100%;
+    margin-top: 0.5rem;
+    background-color: #b91c1c;
+    color: #ffffff;
+}
+
 .boton:disabled {
     background-color: var(--color-borde);
     color: var(--color-texto-suave);

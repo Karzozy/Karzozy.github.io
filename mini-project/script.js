@@ -67,6 +67,7 @@ const textoDescuento = document.getElementById("texto-descuento");
 const lineaDescuento = document.getElementById("linea-descuento");
 const inputDescuento  = document.getElementById("input-descuento");
 const btnDescuento    = document.getElementById("btn-aplicar-descuento");
+const btnVaciarCarrito = document.getElementById("btn-vaciar-carrito");
 const selectCategoria = document.getElementById("filtro-categoria");
 const inputBusqueda = document.getElementById("buscar-producto");
 const formCompra  = document.getElementById("form-compra");
@@ -470,6 +471,30 @@ function quitarDelCarrito(idProducto) {
     actualizarPantalla();
 }
 
+// 5.4. Vacía el carrito completo devolviendo el stock al inventario.
+// Recorre los elementos que estaban guardados en memoria en el array carrito y
+// restaura cada producto, sin solo borrar el HTML del panel.
+function vaciarCarrito() {
+    if (carrito.length === 0) {
+        mostrarMensaje("Tu carrito ya está vacío", "info");
+        return;
+    }
+
+    carrito.forEach((item) => {
+        const producto = buscarProductoPorId(item.id);
+        if (producto) {
+            producto.stock = producto.stock + item.cantidad;
+        }
+    });
+
+    carrito = [];
+    porcentajeDescuento = 0;
+    envioGratisPorCupon = false;
+    inputDescuento.value = "";
+    mostrarMensaje("Carrito vaciado correctamente", "exito");
+    actualizarPantalla();
+}
+
 
 
 /* =========================================================================
@@ -679,6 +704,10 @@ function actualizarPantalla() {
     selectCategoria.addEventListener("change", () => {
         categoriaActual = selectCategoria.value; // .value trae la opción elegida
         renderizarProductos();
+    });
+
+    btnVaciarCarrito.addEventListener("click", () => {
+        vaciarCarrito();
     });
 
     // 8.5.1. Búsqueda en tiempo real: a medida que el usuario escribe, se compara con los nombres de los productos.
