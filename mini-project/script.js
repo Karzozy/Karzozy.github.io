@@ -472,8 +472,9 @@ function quitarDelCarrito(idProducto) {
 }
 
 // 5.4. Vacía el carrito completo devolviendo el stock al inventario.
-// Recorre los elementos que estaban guardados en memoria en el array carrito y
-// restaura cada producto, sin solo borrar el HTML del panel.
+// Recorre los elementos guardados en memoria en el array carrito y suma la
+// cantidad reservada a la propiedad stock del producto original en el arreglo
+// principal, para que ninguna unidad se pierda.
 function vaciarCarrito() {
     if (carrito.length === 0) {
         mostrarMensaje("Tu carrito ya está vacío", "info");
@@ -483,7 +484,9 @@ function vaciarCarrito() {
     carrito.forEach((item) => {
         const producto = buscarProductoPorId(item.id);
         if (producto) {
-            producto.stock = producto.stock + item.cantidad;
+            // Se devuelve exactamente la cantidad que había quedado reservada en
+            // el carrito al stock real del producto del inventario principal.
+            producto.stock += item.cantidad;
         }
     });
 
